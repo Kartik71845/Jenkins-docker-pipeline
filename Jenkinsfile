@@ -17,7 +17,11 @@ pipeline {
 
         stage('Build and Run') {
             steps {
-                sh 'docker compose down || true && docker compose up -d --build'
+                sh '''
+                cd nginx
+                docker-compose down || true
+                docker-compose up -d --build
+                '''
                 echo 'Docker image built and container is running'
             }
         }
@@ -30,11 +34,11 @@ pipeline {
                     usernameVariable: 'USER',
                     passwordVariable: 'PASS'
                 )]) {
-                    sh """
+                    sh '''
                         echo "$PASS" | docker login -u "$USER" --password-stdin
                         docker tag nginx_web $USER/nginx_web:latest
                         docker push $USER/nginx_web:latest
-                    """
+                    '''
                 }
                 echo 'Docker image successfully pushed'
             }
