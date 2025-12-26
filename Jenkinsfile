@@ -17,14 +17,16 @@ pipeline {
 
         stage('Build and Run') {
             steps {
-                sh '''
-                cd nginx
-                docker-compose down || true
-                docker-compose up -d --build
-                '''
-                echo 'Docker image built and container is running'
+             sh '''
+             ls -la
+             docker-compose down || true
+             docker-compose up -d --build
+          '''
             }
         }
+    }
+}
+
 
         stage('Push to Docker Hub') {
             steps {
@@ -43,5 +45,5 @@ pipeline {
                 echo 'Docker image successfully pushed'
             }
         }
-    }
-}
+    
+
