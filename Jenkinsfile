@@ -17,7 +17,8 @@ pipeline {
 
         stage('Build and Run') {
             steps {
-                sh 'docker compose down || true && docker compose up -d --build'
+                sh 'docker compose down || true
+                sh  'docker compose up -d --build'
                 echo 'Docker image built and container is running'
             }
         }
