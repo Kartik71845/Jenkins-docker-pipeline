@@ -4,4 +4,4 @@ services:
     image: nginx_web:latest
     container_name: nginx_web
     ports:
-      - "8081:80"
+      - "8085:80"
