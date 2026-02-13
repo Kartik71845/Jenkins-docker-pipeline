@@ -22,13 +22,11 @@ pipeline {
                 echo "Workspace content:"
                 ls -la
 
-                docker-compose down || true
-                docker-compose up -d --build
+                docker compose down || true
+                docker compose up -d --build
                 '''
                 echo 'Docker containers built and running'
             }
         }
-
-        stage('Push to Docker Hub') {
-            steps {
-                withCredentials([usernamePassword(
+    }
+}
