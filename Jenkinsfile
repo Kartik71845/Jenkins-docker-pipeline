@@ -11,7 +11,7 @@ pipeline {
 
         stage('Clone Code') {
             steps {
-               sh git clone'https://github.com/Kartik71845/Jenkins-docker-pipeline.git', branch: 'main'
+                git url:'https://github.com/Kartik71845/Jenkins-docker-pipeline.git', branch: 'main'
                 echo 'Code cloned from GitHub repository'
             }
         }
