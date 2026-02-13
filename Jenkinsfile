@@ -5,7 +5,7 @@ pipeline {
 
         stage('Start') {
             steps {
-                echo 'Starting Jenkins pipeline for Docker project'
+                echo 'Starting Jenkins cicd pipeline for Docker project'
             }
         }
 
